@@ -198,8 +198,8 @@ function Order() {
 
     </div>
     
-    <div className='grid lg:grid-cols-3 grid-cols-1 gap-4 p-4'>
-        <div className='col-span-2'>
+    <div className='grid lg:grid-cols-3 grid-cols-1 gap-4 p-4 '>
+        <div className='col-span-2 '>
         <Tabs value={activeTab} onValueChange={setActiveTab} className="">
       <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3">
         <TabsTrigger value="type">Paper Type</TabsTrigger>

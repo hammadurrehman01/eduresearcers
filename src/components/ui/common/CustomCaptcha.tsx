@@ -33,7 +33,7 @@ function CustomCaptcha({
     return (
      
          <ReCAPTCHA
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY! || ""}
             ref={recaptchaRef}
             onChange={handleChange}
             onExpired={handleExpired}

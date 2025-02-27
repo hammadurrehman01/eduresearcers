@@ -66,7 +66,7 @@ const DiscountForm = ({ city, locationDetails }: any) => {
       setPending(false);
       if (res?.success) {
         formRef.current?.reset();
-        router.push("/Thank");
+        router.push("/thank-you")
       } else if (res?.error) {
         toast.error(res.error);
       }

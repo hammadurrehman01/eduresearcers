@@ -24,7 +24,7 @@ function HowItWorks() {
                 </div>
                 <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 p-2 md:p-5 scale-95 md:scale-100 '>
                     <div data-aos='flip-up' className='group'>
-                        <div className='group-hover:scale-105  group-hover:shadow-xl transition ease-in duration-200 delay-200 lg:h-[400px] rounded-xl shadow-xl bg-zinc-50 dark:bg-gray-900 border-2 border-orange-500 rounded-xl p-5'>
+                        <div className='group-hover:scale-105  group-hover:shadow-xl transition ease-in duration-200 delay-200 lg:h-[400px] rounded-xl shadow-xl bg-zinc-50 dark:bg-gray-900 border-2 border-orange-500  p-5'>
                             <div className='pt-5 flex items-center justify-around'>
                                 <Image loading='eager' src={'/imgs/howitworks-1.webp'} width={80} height={80} alt='howitworks' ></Image>
                                 <Image loading='eager' className='grayscale' src={'/imgs/arrow.webp'} width={20} height={20} alt='arrow'></Image>
@@ -36,7 +36,7 @@ function HowItWorks() {
                     </div>
 
                     <div data-aos='flip-down' className='group'>
-                        <div className='group-hover:scale-105  group-hover:shadow-xl transition ease-in duration-200 delay-200 lg:h-[400px] rounded-xl shadow-xl bg-zinc-50 dark:bg-gray-900 border-2 border-orange-500 rounded-xl p-5'>
+                        <div className='group-hover:scale-105  group-hover:shadow-xl transition ease-in duration-200 delay-200 lg:h-[400px]  shadow-xl bg-zinc-50 dark:bg-gray-900 border-2 border-orange-500 rounded-xl p-5'>
                             <div className='pt-5 flex items-center justify-around'>
                                 <Image loading='eager' src={'/imgs/howitworks-2.webp'} width={80} height={80} alt='howitworks' ></Image>
                                 <Image loading='eager' className='grayscale' src={'/imgs/arrow.webp'} width={20} height={20} alt='arrow'></Image>
@@ -48,7 +48,7 @@ function HowItWorks() {
                     </div>
 
                     <div data-aos='flip-right' className='group'>
-                        <div className='group-hover:scale-105  group-hover:shadow-xl transition ease-in duration-200 delay-200 lg:h-[400px] rounded-xl shadow-xl bg-zinc-50 dark:bg-gray-900 border-2 border-orange-500 rounded-xl p-5'>
+                        <div className='group-hover:scale-105  group-hover:shadow-xl transition ease-in duration-200 delay-200 lg:h-[400px]  shadow-xl bg-zinc-50 dark:bg-gray-900 border-2 border-orange-500 rounded-xl p-5'>
                             <div className='pt-5 flex items-center justify-around'>
                                 <Image loading='eager' src={'/imgs/howitworks-3.webp'} width={80} height={80} alt='howitworks' ></Image>
                                 <Image loading='eager' className='grayscale' src={'/imgs/arrow.webp'} width={20} height={20} alt='arrow'></Image>
@@ -60,7 +60,7 @@ function HowItWorks() {
                     </div>
 
                     <div data-aos='flip-left' className='group'>
-                        <div className='group-hover:scale-105  group-hover:shadow-xl transition ease-in duration-200 delay-200 lg:h-[400px] rounded-xl shadow-xl bg-zinc-50 dark:bg-gray-900 border-2 border-orange-500 rounded-xl p-5'>
+                        <div className='group-hover:scale-105  group-hover:shadow-xl transition ease-in duration-200 delay-200 lg:h-[400px]  shadow-xl bg-zinc-50 dark:bg-gray-900 border-2 border-orange-500 rounded-xl p-5'>
                             <div className='pt-5 flex items-center justify-around'>
                                 <Image loading='eager' src={'/imgs/howitworks-4.webp'} width={80} height={80} alt='howitworks' ></Image>
                                 <Image loading='eager' className='grayscale' src={'/imgs/arrow.webp'} width={20} height={20} alt='arrow'></Image>
