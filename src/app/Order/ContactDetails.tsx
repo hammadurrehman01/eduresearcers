@@ -16,7 +16,7 @@ import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import CustomCaptcha from "@/components/ui/common/CustomCaptcha";
 
-function ContactDetails({ onPrevious }: { onPrevious: () => void }) {
+function ContactDetails({ onPrevious, locationDetails, currentURL }: any) {
   const {
     topic,
     selectedValue,
@@ -47,6 +47,7 @@ function ContactDetails({ onPrevious }: { onPrevious: () => void }) {
     setCountry,
     setNotes,
   } = useTopic();
+
 
   const [pending, setPending] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -109,8 +110,7 @@ function ContactDetails({ onPrevious }: { onPrevious: () => void }) {
       };
 
       const convertedData = convertToFormData(data);
-
-      const res = await EmailAction(convertedData);
+      const res = await EmailAction(convertedData, locationDetails, currentURL);
       localStorage.setItem("name", name);
       localStorage.setItem("phone", phone);
       setPending(false);
@@ -242,7 +242,7 @@ function ContactDetails({ onPrevious }: { onPrevious: () => void }) {
               </button>
               <button
                 type="submit"
-                disabled={pending}
+                disabled={!isVerified}
                 className="flex m-5 py-2 px-5 bg-orange-500 text-zinc-50 rounded-lg hover:scale-105 transition ease-in duration-200 delay-200 font-medium"
               >
                 {pending ? (

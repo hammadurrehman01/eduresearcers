@@ -32,12 +32,6 @@ export const metadata: Metadata = {
   },
 };
 
-<Script
-  id="cookieyes"
-  strategy="afterInteractive"
-  src="https://cdn-cookieyes.com/client_data/c3f2a6ffb44ef5ea670173cb/script.js"
-/>;
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -53,6 +47,12 @@ export default function RootLayout({
         async
         defer
       ></script>
+      <Script
+        id="cookieyes"
+        strategy="afterInteractive"
+        src="https://cdn-cookieyes.com/client_data/c3f2a6ffb44ef5ea670173cb/script.js"
+      />
+
       <Tawkto />
       <body className={inter.className}>
         <ThemeProvider

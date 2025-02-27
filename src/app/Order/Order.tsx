@@ -23,6 +23,13 @@ interface CurrencyData {
 function Order() {
     const { topic,selectedValue ,wordCount,quality,deadline,referencing,pricePerPage,totalPrice,symbol,setSymbol,ppp,setPpp,unit,setUnit} = useTopic(); // Get topic from context
     const [activeTab, setActiveTab] = useState('type');  
+    const [country, setCountry] = useState("");
+    const [city, setCity] = useState("...");
+    const [number, setNumber] = useState("");
+    const [locationDetails, setLocationDetails] = useState<any>({});
+      const [currentURL, setCurrentURL] = useState("");
+    
+  
 
     const handleNext = () => {
       setActiveTab('instruction');  
@@ -103,6 +110,82 @@ function Order() {
           return { symbol: '£', ppp: 20.00, unit: 'gbp' };
       }
     };
+
+    const fetchCity = async () => {
+      let cityy = localStorage.getItem("city");
+      let countryy = localStorage.getItem("country");
+      if (cityy !== null) {
+        setCity(cityy as any);
+      }
+      if (countryy !== null) {
+        setCountry(countryy as any);
+      }
+  
+      const ipUrl = "https://api.ipify.org?format=json";
+  
+      try {
+        // Fetch the user's IP address
+        const response = await fetch(ipUrl);
+        const data = await response.json(); // Assuming the response is in JSON
+        const userIp = data.ip;
+  
+        // Fetch location data based on the IP address
+        const locationResponse = await fetch(
+          `https://pro.ip-api.com/json/${userIp}?key=tRuJ0KuCug4wEHs&fields=status,message,continent,continentCode,country,countryCode,countryCode3,region,regionName,city,district,zip,lat,lon,timezone,offset,currentTime,currency,callingCode,isp,org,as,asname,reverse,mobile,proxy,hosting,query`
+        );
+  
+  
+        if (!locationResponse.ok) {
+          throw new Error("Network response was not ok");
+        }
+  
+        const locationData = await locationResponse.json();
+  
+        // CHANGES: im change the city to country
+        let fetchedCity = locationData.country || "London"; // Set default value
+        // let fetchedCity = locationData.country || "London"; // Set default value
+        let fetchedCountry = locationData.countryCode || "GB"; // Set default value
+  
+        // Store the city and country in local storage
+        localStorage.setItem("city", fetchedCity);
+        localStorage.setItem("country", fetchedCountry);
+  
+        // Assuming you have functions like setCity and setCountry to update your UI
+        setCity(fetchedCity);
+        setCountry(fetchedCountry);
+        setLocationDetails(locationData);
+      } catch (error) {
+        // If the API request fails, set default values
+      }
+    };
+  
+    useEffect(() => {
+      fetchCity();
+    }, []);
+  
+    useEffect(() => {
+      const dynamicNumber: any = {
+        US: "+19179331132",
+        MX: "+19179331132",
+        CA: "+19179331132",
+        AU: "+61480004010",
+        NZ: "+61480004010",
+        UK: "+447593709971",
+      };
+  
+      if (dynamicNumber[country]) {
+        setNumber(dynamicNumber[country]);
+      } else {
+        setNumber("+447593709971");
+      }
+    }, [country]);
+
+      useEffect(() => {
+        // Get the current URL using window.location
+        const currentURL = window.location.href;
+        setCurrentURL(currentURL);
+        // Log the current URL to the console (or do whatever you need with it)
+      }, []);
   
     if (loading) return <div className='h-screen  text-2xl font-semibold flex justify-center items-center gap-2'><Loader2 className='animate-spin w-5 h-5' /> Loading...</div>;
     if (error) return <div>Error: {error}</div>;
@@ -130,7 +213,7 @@ function Order() {
         <PaperInstruction onNext={handleNextToDetails} onPrevious={handlePreviousToType}/>
       </TabsContent>
       <TabsContent value='details'>
-        <ContactDetails  onPrevious={handlePreviousToInstruction}/>
+        <ContactDetails  onPrevious={handlePreviousToInstruction} locationDetails={locationDetails} currentURL={currentURL} />
       </TabsContent>
     </Tabs>
         </div>

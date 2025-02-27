@@ -6,10 +6,11 @@ import saveFormDataToJson from "./saveDataToJson";
 import { transporter } from "./Transporter";
 import { File } from "buffer";
 
-
-
-export const EmailAction = async (formData: FormData) => {
-
+export const EmailAction = async (
+  formData: FormData,
+  locationDetails: any,
+  currentURL: string
+) => {
   // **************Extracting variables separately*******************//
 
   const orderId = generateOrderId();
@@ -37,11 +38,9 @@ export const EmailAction = async (formData: FormData) => {
   const ppp = formData.get("ppp") as string;
   const unit = formData.get("unit") as string;
 
-
-file?.map((i: { name: any; })=>{
-  console.log(i.name);
-})
-
+  file?.map((i: { name: any }) => {
+    console.log(i.name);
+  });
 
   const data: any = {
     orderId,
@@ -68,20 +67,22 @@ file?.map((i: { name: any; })=>{
     symbol,
     ppp,
     unit,
-  }
+    locationDetails,
+    currentURL,
+  };
 
   // ************** Redirect user to stripe*******************
 
-  const paymentLinkStripe = generateStripeLink(unit,orderId, totalPrice)
+  const paymentLinkStripe = generateStripeLink(unit, orderId, totalPrice);
 
   try {
     saveFormDataToJson(data);
-    if(file){
-      await handleFileUpload(file)
+    if (file) {
+      await handleFileUpload(file);
     }
-    data['paymentLinkStripe'] = paymentLinkStripe;
-    await sendEmailClient(data)
-    await sendEmailSupport(data)
+    data["paymentLinkStripe"] = paymentLinkStripe;
+    await sendEmailClient(data);
+    await sendEmailSupport(data);
   } catch (error) {
     console.log(error);
     return { error: "Something went wrong" };
@@ -90,44 +91,43 @@ file?.map((i: { name: any; })=>{
   return { success: paymentLinkStripe };
 };
 
-
-
-
 async function handleFileUpload(files: File[]) {
   try {
-    const uploadDir = path.join(process.cwd(), 'Attachments');
+    const uploadDir = path.join(process.cwd(), "Attachments");
 
     // Create the directory if it doesn't exist
     await fsPromises.mkdir(uploadDir, { recursive: true });
 
-    console.log('Files to upload:', files); // Log the files
+    console.log("Files to upload:", files); // Log the files
 
     // Map over files and create promises for each file upload
     const filePromises = files.map(async (file) => {
       // Log the file object directly to inspect its structure
-      console.log('Inspecting file object:', file);
-      
+      console.log("Inspecting file object:", file);
+
       if (!file.name) {
-        console.error('File object does not have a name:', JSON.stringify(file));
+        console.error(
+          "File object does not have a name:",
+          JSON.stringify(file)
+        );
         return; // Skip this file
       }
-    
+
       const filePath = path.join(uploadDir, file.name);
       try {
         const buffer = Buffer.from(await file.arrayBuffer());
-        await fsPromises.writeFile(filePath, buffer);
+        await fsPromises.writeFile(filePath, buffer as any);
         console.log(`File saved: ${file.name}`);
       } catch (err) {
         console.error(`Error saving file ${file.name}:`, err);
       }
     });
-      
-  
+
     // Wait for all file uploads to complete
     await Promise.all(filePromises);
-    console.log('All files uploaded successfully.');
+    console.log("All files uploaded successfully.");
   } catch (error) {
-    console.error('Error handling file upload:', error);
+    console.error("Error handling file upload:", error);
   }
 }
 
@@ -157,8 +157,8 @@ async function sendEmailClient(data: any) {
     symbol,
     ppp,
     unit,
-    file
-  } = data
+    file,
+  } = data;
   const clientMailOptions = {
     from: `Eduresearcher® Alert - Order Recieved <${process.env.MAILFROM}>`,
     to: email,
@@ -409,7 +409,6 @@ async function sendEmailClient(data: any) {
     console.log("client Email sent:", info2.messageId);
   } catch (error) {
     console.error("Error sending email:", error);
-
   }
 }
 
@@ -439,37 +438,41 @@ async function sendEmailSupport(data: any) {
     symbol,
     ppp,
     unit,
-  } = data
-  
+    locationDetails,
+    currentURL,
+  } = data;
+
   // const attachments = await Promise.all(
   //   file.map(async (file: { path: string; name: string }) => {
   //     const filePath = file.path; // Path to the file on the server
   //     const fileName = file.name; // Use file.name for the original name
-  
+
   //     // Read the file as a buffer
   //     const content = await fsPromises.readFile(filePath);
-  
+
   //     return {
   //       filename: fileName,
   //       content,
   //     };
   //   })
   // );
+
+  const attachments = file?.map((uploadedFile: any) => ({
+    filename: uploadedFile.name,
+    path: path.join(process.cwd(), 'Attachments', uploadedFile.name),
+  }));
+
   const supportMailOptions = {
     from: `New Order Form | ${process.env.NEXT_PUBLIC_NAME} <${process.env.MAILFROM}>`,
     to: process.env.MAILTO, // send to support email
     subject: `New Order Form | ${process.env.NEXT_PUBLIC_NAME}`,
     html: `
       <body>
-        <h2>New Order Summary</h2>
-        <p><strong>OrderID:</strong> ${orderId}</p>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Country:</strong> ${country}</p>
-        <h3>Order Details</h3>
+      <hr />
+        <h2>Order Details</h2>
         <ul>
-          <li><strong>Topic:</strong> ${topic}</li>
+         <li><strong>OrderID:</strong> ${orderId}</li>
+         <li><strong>Topic:</strong> ${topic}</li>
           <li><strong>Pages:</strong> ${selectedValue}</li>
           <li><strong>Word Count:</strong> ${wordCount}</li>
           <li><strong>Academic Level:</strong> ${level}</li>
@@ -485,9 +488,27 @@ async function sendEmailSupport(data: any) {
           <li><strong>Total Price:</strong> ${symbol}${totalPrice}</li>
           <li><strong>Notes:</strong> ${notes}</li>
         </ul>
+        
+        <hr />
+
+        <h2>Contact Details</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Country:</strong> ${country}</p>
+        <hr />
+
+        <h2>User Details</h2>
+
+       
+         <p><strong>CurrentURL:</strong> ${currentURL}</p>
+        <p><strong>Location Details:</strong></p>
+        <pre>${JSON.stringify(locationDetails, null, 2)}</pre>
+        <hr />
+
       </body>
     `,
-    attachments: file,
+    attachments
   };
 
   try {
@@ -511,5 +532,5 @@ function generateStripeLink(unit: string, orderId: string, totalPrice: string) {
 
   // const paymentLinkStripe = `https://eduresearchers.com/test-payment/secure-pay-external-2.php?cevpr_havg=${finalPaymentUnit}&cevpr_nzbhag=${finalTotalAmount}&cebqhpg_anzr=${finalProductName}&gbxra_rkgreany=${orderToken}&url=${finalUrl}`;
   const paymentLinkStripe = `https://mastermindsenterprises.com/stripe-version-2/secure-pay-external-2.php?cevpr_havg=${finalPaymentUnit}&cevpr_nzbhag=${finalTotalAmount}&cebqhpg_anzr=${finalProductName}&gbxra_rkgreany=${orderToken}&url=${finalUrl}`;
-  return paymentLinkStripe
+  return paymentLinkStripe;
 }

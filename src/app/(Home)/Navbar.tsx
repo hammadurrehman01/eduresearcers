@@ -17,7 +17,6 @@ const Navbar = () => {
     setHash(window.location.hash)
   },[params,pathname])
 
-  console.log(hash);
   // Function to check if the link is active
   const isActiveLink  = (path:string) => path ===  pathname  + hash;
 
