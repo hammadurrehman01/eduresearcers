@@ -12,12 +12,12 @@ import { IoChatbubbleEllipses } from "react-icons/io5";
 export function HomeBanner() {
   const [highlightForm, setHighlightForm] = useState(false);
 
-  const handleGetStartedClick = () => {
-    setHighlightForm(true);
-    setTimeout(() => {
-      setHighlightForm(false);
-    }, 2000);
-  };
+  // const handleGetStartedClick = () => {
+  //   setHighlightForm(true);
+  //   setTimeout(() => {
+  //     setHighlightForm(false);
+  //   }, 2000);
+  // };
 
   const tawkToClick = () => {
     if (window.Tawk_API) {
@@ -37,19 +37,6 @@ export function HomeBanner() {
           <div className=' grid lg:grid-cols-2 grid-cols-1 gap-3 lg:py-10 py-3'>
             {/* Left Section */}
             <div className='lg:py-4 lg:pl-24 px-5 scale-90 md:scale-100'>
-              {/* <div className=' grid lg:grid-cols-3 grid-cols-2 gap-3 ml-10 md:ml-0'>
-              <div className=' bg-[#111827]  text-center rounded-lg text-white font-extrabold  text-sm'>
-                Affordable
-              </div>
-              <div className=' bg-[#111827] lg:text-center text-white  rounded-lg   font-extrabold  text-sm'>
-                Fastest
-              </div>
-              <div className=' bg-[#111827] lg:text-center text-white  rounded-lg   font-extrabold  text-sm'>
-               Secured
-              </div>
-              
-            </div> */}
-
               <p className='text-sm md:text-base  text-center md:text-start text-[#f97316] font-bold'>
                 - AFFORDABLE - FASTEST - 100% SECURED -
 
@@ -69,7 +56,7 @@ export function HomeBanner() {
                   <ShoppingCartIcon className='mr-1' /> Place Your Order
                 </Link>
 
-                <button onClick={tawkToClick} className='bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 flex font-medium items-center py-[13px] px-6 rounded-lg md:hover:scale-105 md:scale-100 scale-90 hover:scale-95 transition ease-in duration-200 delay-200  gap-2 w-full justify-center md:justify-start'>
+                <button onClick={tawkToClick} className='bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 flex font-medium items-center py-[14px] px-6 rounded-lg md:hover:scale-105 md:scale-100 scale-90 hover:scale-95 transition ease-in duration-200 delay-200  gap-2 w-full justify-center md:justify-start text-sm'>
                   <IoChatbubbleEllipses className='w-6 h-6' /> Discuss With Experts
                 </button>
 

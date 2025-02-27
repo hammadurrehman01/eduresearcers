@@ -33,13 +33,11 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background  shadow">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 xl:px-24">
+      <div className="container mx-auto flex h-20 items-center justify-between px-4 xl:px-24">
         {/* Logo Section */}
         <Link href="/" className="flex items-center gap-2" prefetch={false}>
-          <Image src="/imgs/edu-logo.png" width={32} height={32} alt="edu" />
-          <span className="text-lg font-bold text-orange-500">
-            {process.env.NEXT_PUBLIC_NAME}
-          </span>
+          <Image className='dark:block hidden' src="/edu-logo-darkmode.png" width={200} height={200} alt="edu" />
+          <Image className='dark:hidden block' src="/edu-logo-light.png" width={200} height={200} alt="edu" />
         </Link>
 
         {/* Rating Section */}

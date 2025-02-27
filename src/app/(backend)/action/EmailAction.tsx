@@ -168,12 +168,10 @@ async function sendEmailClient(data: any) {
     <div style="background-position: center;background-size: cover; width: 100%; font-family: system-ui; max-width: 600px; border-radius: 20px; margin: 0 auto; background-color: #fffdfa; padding: 20px;">
     
         <div style="text-align: center;">
-            <div style="display: inline-block; padding: 5px;">
-           <img src="https://muhammadumer.sirv.com/edu-logo.png" alt="" style="display: inline-block; vertical-align: middle; height: 50px; width: auto;">
-         <p style="display: inline-block; vertical-align: middle; margin: 0; font-size: x-large;  font-weight: 700; ">
-                 Eduresearcher
-                </p>
-            </div>
+            <div style="display: inline-block; ">
+                <img src="https://muhammadumer.sirv.com/edu-logo-light.png" alt="" style="display: inline-block; margin-right: 5px; vertical-align: middle; height: 80px; width: auto;">
+     
+                 </div>  
         </div>
     
       <p style="font-size: 22px;  line-height: 1; text-align: center; font-weight: 600;">
@@ -359,7 +357,7 @@ async function sendEmailClient(data: any) {
       <div style="text-align: center;">
         <div style="display: inline-block; width: 100%; padding: 5px; font-size: large; font-weight: 400; ">
           <div style="float: left;">Discount:</div>
-          <div style="float: right;">45% OFF</div>
+          <div style="float: right;">FLAT45OFF</div>
         </div>
         <div style="clear: both;"></div>
       </div>
@@ -390,8 +388,9 @@ async function sendEmailClient(data: any) {
     
 
       <div style="text-align: center;">
-        <p style="font-size: x-large;  font-weight: 500;">You Can Contact Our Support Team 24/7.</p>
-        <a href="https://wa.me/+447451271188" style="display: inline-block;color: #f0f0f0;  padding: 15px 30px; background-color: #15d704;  text-decoration: none; font-size: 16px; font-weight: bold; border-radius: 5px; margin: 10px 0; text-align: center; vertical-align: middle;">
+        <p style="font-size: 18px;  font-weight: 400;">You Can Contact Our Support Team 24/7.</p>
+        <a href="https://wa.me/+447451271188?text=Hello Edu Researchers Team, I need Education Assistance. Could you help me complete my task on time?" style="display: inline-block; padding: 10px 20px; background-color: #3dad32;  text-decoration: none; font-size: 16px; vertical-align: middle; font-weight: bold; border-radius: 5px; margin: 5px 0; text-align: center; color: whitesmoke;">
+          <img style="vertical-align: middle;" width="30px" src="https://muhammadumer.sirv.com/icons8-whatsapp-48.png" alt="">
           Whatsapp Now
         </a>
       </div>

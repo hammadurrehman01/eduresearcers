@@ -7,30 +7,13 @@ import { Toaster } from "sonner";
 import Footer from "./(Home)/Footer";
 import Tawkto from "@/lib/Tawkto";
 import Script from "next/script";
+import FloatingContact from "@/components/FloatingContact";
 
 const inter = Montserrat({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-export const metadata: Metadata = {
-  title: "Best Academic Assistance Team | Edu Researchers",
-  description:
-    "Our Academic Assistance Team at Edu Researchers provides professional academic support to help students succeed. Get high-quality academic assistance tailored to your needs",
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-    googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-};
 
 <Script
   id="cookieyes"
@@ -61,6 +44,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <FloatingContact/>
           <Navbar />
           {children}
           <Footer />

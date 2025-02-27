@@ -1,51 +1,26 @@
-"use client"
-import { useInView } from "react-intersection-observer";
-import ExpertSection from "./ExpertSection";
-import FaqSection from "./FaqSection";
-import {HomeBanner} from "./HomeBanner";
-import HowItWorks from "./HowItWorks";
-import Reviews from "./Reviews";
-import ServiceSection from "./ServiceSection";
-import SmallDivider from "./SmallDivider";
-import SupportSection from "./SupportSection";
-import TopExperts from "./TopExperts";
-import UniSection from "./UniSection";
-import { Suspense, useEffect } from "react";
-import Aos from 'aos'
-import 'aos/dist/aos.css';
-import { useSearchParams } from "next/navigation";
-import { WriterCarousel } from "./writer-carousel";
+import React from 'react';
+import HomeComps from '@/app/(Home)/HomeComps';
+import { Metadata } from 'next';
 
-export default function Home( ) {
-  const { ref, inView } = useInView({
-    triggerOnce: false,
-    threshold: 0.1,
-  });
+export const metadata: Metadata = {
+  title: "Best Academic Assistance Team | Edu Researchers",
+  description:
+    "Our Academic Assistance Team at Edu Researchers provides professional academic support to help students succeed. Get high-quality academic assistance tailored to your needs.",
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: { 
+      index: true,
+      follow: true,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
 
-  useEffect(() => {
-    Aos.init({
-      duration: 800,
-      disable:'mobile',
-      offset: 100,
-    });
-  }, [inView]);
-  return (
-    <div ref={ref}>
-      <Suspense fallback={<>loading...</>}>
-      <HomeBanner />
-      </Suspense>
-      <UniSection/>
-      <div className="bg-zinc-500 dark:bg-zinc-800 h-1 w-full mt-4"></div>
-      <ServiceSection/>
-      <ExpertSection/>
-      <HowItWorks/>
-      {/* <TopExperts/> */}
-      <div className="bg-zinc-500 dark:bg-zinc-800 h-1 w-full mt-4"></div>
-      <WriterCarousel/>
-      <SupportSection/>
-      <Reviews/>
-      <SmallDivider/>
-      <FaqSection/>
-    </div>
-  );
+export default function Home() {
+  return <HomeComps />;
 }

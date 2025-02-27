@@ -34,17 +34,17 @@ function Footer() {
 
     const handleGetStartedClick = () => {
         if (window.Tawk_API) {
-          window.Tawk_API.toggle();
+            window.Tawk_API.toggle();
         }
-      };
+    };
     return (
         <div className=' pt-10 pb-5  bg-zinc-900 dark:bg-gray-900'>
             <div className='mx-auto max-w-screen-xl'>
                 <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 px-4 pt-10'>
                     <div className=''>
-                        <Link href="/" className="flex items-center justify-center lg:justify-start gap-2" prefetch={false}>
-                            <Image src={'/imgs/edu-logo.png'} width={32} height={32} alt='edu'></Image>
-                            <span className="md:text-2xl text-lg font-bold text-orange-500 ">{process.env.NEXT_PUBLIC_NAME}</span>
+                        <Link href="/" className="flex items-center justify-center lg:justify-start gap-2 lg:-translate-x-8" prefetch={false}>
+                            <Image className='' src="/edu-logo-darkmode.png" width={300} height={300} alt="edu" />
+
                         </Link>
                         <p className='pt-4 text-white text-center lg:text-start font-medium text-sm'>Edu Researchers – Your Trusted Partner For Academic Success. Get Expert Assistance 24/7 With Best Quality, Originality, And Timely Delivery Guaranteed! </p>
                         <div className='flex item-center justify-center lg:justify-start gap-3 mt-4'>
@@ -89,36 +89,36 @@ function Footer() {
                     <div className="bg-zinc-500 dark:bg-zinc-800 h-1 w-full mt-4 lg:hidden block"></div>
 
                     <div>
-                    <div className="flex flex-col justify-center lg:justify-start mx-auto lg:mx-0 gap-4 lg:pl-9 ">
-                        {/* Call Now Button */}
-                        <div className="flex items-center justify-center lg:justify-start mx-auto lg:mx-0 text-white ">
-                            <Link href="tel:+447451271188" className="flex items-center gap-2">
-                                <PhoneCall className='w-6 h-6 text-red-500' /> Call Now
-                            </Link>
-                        </div>
+                        <div className="flex flex-col justify-center lg:justify-start mx-auto lg:mx-0 gap-4 lg:pl-9 ">
+                            {/* Call Now Button */}
+                            <div className="flex items-center justify-center lg:justify-start mx-auto lg:mx-0 text-white ">
+                                <Link href="tel:+447451271188" className="flex items-center gap-2">
+                                    <PhoneCall className='w-6 h-6 text-red-500' /> Call Now
+                                </Link>
+                            </div>
 
-                        {/* WhatsApp Button */}
-                        <div className="text-white ">
-                            <Link href="https://wa.me/+447451271188?text=Hello Edu Researchers Team, I need Education Assistance. Could you help me complete my task on time?" className="flex items-center gap-2 justify-center lg:justify-start mx-auto lg:mx-0">
-                                <PiWhatsappLogo className='w-6 h-6 text-green-500' /> WhatsApp Now
-                            </Link>
-                        </div>
+                            {/* WhatsApp Button */}
+                            <div className="text-white ">
+                                <Link href="https://wa.me/+447451271188?text=Hello Edu Researchers Team, I need Education Assistance. Could you help me complete my task on time?" className="flex items-center gap-2 justify-center lg:justify-start mx-auto lg:mx-0">
+                                    <PiWhatsappLogo className='w-6 h-6 text-green-500' /> WhatsApp Now
+                                </Link>
+                            </div>
 
-                        {/* Email Button */}
-                        <div className="text-white">
-                            <Link href="mailto:support@eduresearchers.com" className="flex items-center gap-2 justify-center lg:justify-start mx-auto lg:mx-0">
-                                <PiEnvelopeFill className='w-6 h-6 text-orange-500' /> Email Us
-                            </Link>
-                        </div>
-                        <div className="text-white">
-                            <Button onClick={handleGetStartedClick} className="flex items-center justify-center lg:justify-start mx-auto lg:mx-0 gap-2 pl-0 pt-0 bg-transparent hover:bg-transparent">
-                                <MessageCircle className='w-6 h-6 text-blue-500' /> Live Chat
-                            </Button>
+                            {/* Email Button */}
+                            <div className="text-white">
+                                <Link href="mailto:support@eduresearchers.com" className="flex items-center gap-2 justify-center lg:justify-start mx-auto lg:mx-0">
+                                    <PiEnvelopeFill className='w-6 h-6 text-orange-500' /> Email Us
+                                </Link>
+                            </div>
+                            <div className="text-white">
+                                <Button onClick={handleGetStartedClick} className="flex items-center justify-center lg:justify-start mx-auto lg:mx-0 gap-2 pl-0 pt-0 bg-transparent hover:bg-transparent">
+                                    <MessageCircle className='w-6 h-6 text-blue-500' /> Live Chat
+                                </Button>
+                            </div>
                         </div>
                     </div>
-                    </div>
 
-                   
+
 
                     {/* <div className=''>
                         <div className='pt-3 text-white font-medium '>Follow Us</div>
