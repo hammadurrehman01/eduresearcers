@@ -1,0 +1,28 @@
+{
+  "orderId": "2502221038",
+  "name": "Qadama",
+  "phone": "778987867890",
+  "country": "Pakistan",
+  "email": "qadamaalam@gmail.com",
+  "notes": "Hello Dear",
+  "topic": "",
+  "selectedValue": "1",
+  "wordCount": "300",
+  "level": "undergraduate",
+  "paper": "Dissertation",
+  "quality": "Standard Quality",
+  "deadline": "10 days",
+  "subject": "Chemistry",
+  "source": "10",
+  "format": "Double Spaced",
+  "referencing": "Harvard Referencing",
+  "pricePerPage": "8",
+  "totalPrice": "8",
+  "file": [
+    {}
+  ],
+  "language": "English (U.K)",
+  "symbol": "£",
+  "ppp": "20",
+  "unit": "gbp"
+}
