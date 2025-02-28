@@ -21,7 +21,7 @@ function ReviewCarousel() {
                 <CardContent className=" p-6">
                   <div className='flex items-center gap-3'>
                   <div className='w-16 h-16 rounded-full flex items-center'>
-                    <Image loading='eager' className='rounded-full' src={'/imgs/reviews-1.jpg'} width={80} height={80} alt='testimonial' ></Image>
+                    <Image loading='eager' className='rounded-full' src={'/imgs/reviews-1.webp'} width={80} height={80} alt='testimonial' ></Image>
                   </div>
                   <div className='flex gap-3 p-2'>
                     <div className=' text-muted-foreground font-medium'>
@@ -45,7 +45,7 @@ function ReviewCarousel() {
                 <CardContent className=" p-6">
                   <div className='flex items-center gap-3'>
                   <div className='w-16 h-16 rounded-full flex items-center'>
-                    <Image loading='eager' className='rounded-full' src={'/imgs/reviews-2.jpg'} width={80} height={80} alt='testimonial' ></Image>
+                    <Image loading='eager' className='rounded-full' src={'/imgs/reviews-2.webp'} width={80} height={80} alt='testimonial' ></Image>
                   </div>
                   <div className='flex gap-3 p-2'>
                     <div className=' text-muted-foreground font-medium'>
@@ -68,7 +68,7 @@ function ReviewCarousel() {
                 <CardContent className=" p-6">
                   <div className='flex items-center gap-3'>
                   <div className='w-16 h-16 rounded-full flex items-center'>
-                    <Image loading='eager' className='rounded-full' src={'/imgs/reviews-5.png'} width={80} height={80} alt='testimonial' ></Image>
+                    <Image loading='eager' className='rounded-full' src={'/imgs/reviews-5.webp'} width={80} height={80} alt='testimonial' ></Image>
                   </div>
                   <div className='flex gap-3 p-2'>
                     <div className=' text-muted-foreground font-medium'>
@@ -91,7 +91,7 @@ function ReviewCarousel() {
                 <CardContent className=" p-6">
                   <div className='flex items-center gap-3'>
                   <div className='w-16 h-16 rounded-full flex items-center'>
-                    <Image loading='eager' className='rounded-full' src={'/imgs/reviews-3.png'} width={80} height={80} alt='testimonial' ></Image>
+                    <Image loading='eager' className='rounded-full' src={'/imgs/reviews-3.webp'} width={80} height={80} alt='testimonial' ></Image>
                   </div>
                   <div className='flex gap-3 p-2'>
                     <div className=' text-muted-foreground font-medium'>
@@ -114,7 +114,7 @@ function ReviewCarousel() {
                 <CardContent className=" p-6">
                   <div className='flex items-center gap-3'>
                   <div className='w-16 h-16 rounded-full flex items-center'>
-                    <Image loading='eager' className='rounded-full' src={'/imgs/reviews-4.png'} width={80} height={80} alt='testimonial' ></Image>
+                    <Image loading='eager' className='rounded-full' src={'/imgs/reviews-4.webp'} width={80} height={80} alt='testimonial' ></Image>
                   </div>
                   <div className='flex gap-3 p-2'>
                     <div className=' text-muted-foreground font-medium'>
@@ -136,7 +136,7 @@ function ReviewCarousel() {
                 <CardContent className=" p-6">
                   <div className='flex items-center gap-3'>
                   <div className='w-16 h-16 rounded-full flex items-center'>
-                    <Image loading='eager' className='rounded-full' src={'/imgs/reviews-6.png'} width={80} height={80} alt='testimonial' ></Image>
+                    <Image loading='eager' className='rounded-full' src={'/imgs/reviews-6.webp'} width={80} height={80} alt='testimonial' ></Image>
                   </div>
                   <div className='flex gap-3 p-2'>
                     <div className=' text-muted-foreground font-medium'>

@@ -8,7 +8,7 @@ function ThankYou() {
     const name = localStorage.getItem("name")
     const number = localStorage.getItem("number")
   return (
-    <div style={{backgroundImage:"url('/imgs/banner-im.jpg')",backgroundSize:'cover',backgroundPosition:'center'}} className="flex  flex-col items-center justify-center h-screen bg-background px-4 pb-24 pt-32 md:pt-2 sm:px-6 lg:px-8 relative">
+    <div style={{backgroundImage:"url('/imgs/banner-im.webp')",backgroundSize:'cover',backgroundPosition:'center'}} className="flex  flex-col items-center justify-center h-screen bg-background px-4 pb-24 pt-32 md:pt-2 sm:px-6 lg:px-8 relative">
        <div className="dark:absolute dark:inset-0 dark:bg-black/90"></div>
     <div className="mx-auto max-w-screen-xl text-center  scale-90 md:scale-100">
       <div className="inline-flex items-center rounded-full bg-orange-500 px-4 py-2 ">

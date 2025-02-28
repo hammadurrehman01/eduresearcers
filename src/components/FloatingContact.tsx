@@ -118,7 +118,7 @@ export function FloatingContact() {
         onMouseLeave={handleItemLeave}
       >
         <Link 
-          href="mailto:support@takingmyclassesonline.com" 
+        href="mailto:support@eduresearchers.com"
           className="w-12 h-12 flex items-center justify-center dark:bg-white bg-gray-900 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out"
         >
           <MdEmail className="w-6 h-6 text-white dark:text-zinc-900" />

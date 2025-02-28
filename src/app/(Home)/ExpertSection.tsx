@@ -42,7 +42,7 @@ function ExpertSection() {
   // };
   return (
     <div id='service' className='max-w-screen-xl mx-auto mt-4 md:mt-10'>
-      <div data-aos='fade-down' data-aos-duration="1500" className='grid lg:grid-cols-2 grid-cols-1 p-5 rounded-xl bg-[url(/imgs/banner-im.jpg)] bg-cover bg-center bg-no-repeat relative'>
+      <div data-aos='fade-down' data-aos-duration="1500" className='grid lg:grid-cols-2 grid-cols-1 p-5 rounded-xl bg-[url(/imgs/banner-im.webp)] bg-cover bg-center bg-no-repeat relative'>
       <div className="absolute dark:inset-0 dark:bg-black/90"></div>
 
         <div data-aos='zoom-in'>
