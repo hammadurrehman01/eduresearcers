@@ -219,7 +219,7 @@ function Order() {
         </div>
 
         <div>
-            <div className='py-5 px-2 bg-zinc-900 text-white rounded-2xl overflow-hidden'>
+            <div className='py-5 px-2 dark:bg-gray-900 bg-zinc-900 text-white rounded-2xl overflow-hidden'>
                 <div className='text-xl md:text-3xl text-center py-3 font-bold '>Order Summary</div>
                 <div className='flex justify-between items-center px-3 py-3 font-semibold'>
                     <div>Topic Of Paper</div>

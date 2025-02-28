@@ -9,18 +9,18 @@ export async function sendPopupEmails(formData: FormData) {
 
     // Transporter configuration
     const transporter = nodemailer.createTransport({
-      host: process.env.NEXT_PUBLIC_HOST as string,
-      port: process.env.NEXT_PUBLIC_PORTS as unknown as number,
+      host: process.env.HOST as string,
+      port: process.env.PORTS as unknown as number,
       secure: false, // true for 465, false for other ports
       auth: {
-        user: process.env.NEXT_PUBLIC_USER, // your SMTP username
-        pass: process.env.NEXT_PUBLIC_PASSWORD, // your SMTP password
+        user: process.env.USER, // your SMTP username
+        pass: process.env.PASSWORD, // your SMTP password
       },
     });
 
     // Email options for the client
     const clientMailOptions: any = {
-      from: `Edu Researcher® Alert - Discount Recieved <${process.env.NEXT_PUBLIC_MAILFROM}>`,
+      from: `Edu Researcher® Alert - Discount Recieved <${process.env.MAILFROM}>`,
       to: email,
       subject: "You're in! Here's Your Exclusive Discount 🎉",
       html: `   <body style="margin: 0; padding: 0;   color: black;">
@@ -89,8 +89,8 @@ export async function sendPopupEmails(formData: FormData) {
 
     // Email options for the support team
     const supportMailOptions = {
-      from: `Edu Researcher® Alert - Discount Recieved <${process.env.NEXT_PUBLIC_MAILFROM}>`,
-      to: `${process.env.NEXT_PUBLIC_MAILTO}`,
+      from: `Edu Researcher® Alert - Discount Recieved <${process.env.MAILFROM}>`,
+      to: `${process.env.MAILTO}`,
       subject: "New Popup Form Submission",
       html: `
             <div style="font-family: Arial, sans-serif; line-height: 1.6;">

@@ -27,6 +27,40 @@ const SitePopup = ({ setModal }: Props) => {
     const closeModal = () => {
         setModal(false);
     };
+    const handleCloseModal = () => {
+        setModal(false);
+        localStorage.setItem("modal", "true");
+        localStorage.setItem("modalTimestamp", new Date().getTime().toString());
+        localStorage.setItem("externalModal", "false");
+      };
+
+    useEffect(() => {
+        const modalData = localStorage.getItem("modal");
+        const storedTime = localStorage.getItem("modalTimestamp");
+        const externalModal = localStorage.getItem("externalModal");
+    
+        if (modalData === "true" && storedTime) {
+          const currentTime = new Date().getTime();
+          const elapsedTime = currentTime - parseInt(storedTime, 10);
+          const eightHours = 8 * 60 * 60 * 1000;
+    
+          if (elapsedTime >= eightHours) {
+            localStorage.setItem("modal", "false");
+          }
+        }
+    
+        // If modalData is "false" (or missing after 8 hours), show modal
+        if (
+          (!modalData || modalData === "false") &&
+          externalModal &&
+          externalModal === "false"
+        ) {
+          const timer = setTimeout(() => {
+            setModal(true);
+          }, 7000);
+          return () => clearTimeout(timer);
+        }
+      }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -79,6 +113,10 @@ const SitePopup = ({ setModal }: Props) => {
                 console.log(response);
 
                 if (response?.success) {
+                    
+                    handleCloseModal()
+
+
                     router.push("/thank-you");
                 } else {
                     console.log("Error: " + response?.error);
@@ -88,6 +126,8 @@ const SitePopup = ({ setModal }: Props) => {
             }
         }
     };
+
+  
 
     const [hours, setHours] = useState(1)
     const [minutes, setMinutes] = useState(57)
@@ -321,7 +361,7 @@ const SitePopup = ({ setModal }: Props) => {
                                         type="text"
                                         placeholder="Enter your phone number"
                                         value={phone}
-                                        onChange={setPhone}
+                                        onChange={(e) => setPhone(e.target.value)} 
                                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 p-3"
                                     />
                                     {phone === "" && <span className="text-red-600 text-xs mt-1 block">{phoneMessage}</span>}
@@ -388,13 +428,14 @@ const SitePopup = ({ setModal }: Props) => {
                             </div>
 
                             {/* Captcha */}
-                            <div className="w-full">
+                            <div className="w-full flex items-center justify-center">
                                 <CustomCaptcha setIsVerified={setIsVerified} />
                             </div>
 
                             {/* Submit Button */}
                             <button
                                 type="submit"
+                                disabled={!isVerified}
                                 className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-4 rounded-lg transition-all duration-200 shadow-md"
                             >
                                 {pending ? (

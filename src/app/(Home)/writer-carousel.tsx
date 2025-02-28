@@ -395,7 +395,7 @@ export function WriterCarousel() {
                     <div className="flex">
                         {writers.map((writer) => (
                             <div key={writer.id} className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]  p-4">
-                                <div className="border rounded-lg p-6 space-y-4 h-[450px]">
+                                <div className="border rounded-lg p-6 space-y-4 h-[450px] bg-zinc-50 dark:bg-[#1d1917]">
                                     <div className="flex items-center gap-4">
                                         <Image
                                             src={writer.image || "/placeholder.svg"}

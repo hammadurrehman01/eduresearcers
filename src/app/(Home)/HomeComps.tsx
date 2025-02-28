@@ -29,14 +29,6 @@ export default function HomeComps( ) {
   });
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setModal(true);
-    }, 4000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
     if (modal) {
       document.body.style.overflowY = "hidden";
     } else {
@@ -124,6 +116,46 @@ export default function HomeComps( ) {
       setNumber("+447593709971");
     }
   }, [country]);
+
+  useEffect(() => {
+    const modalData = localStorage.getItem("modal");
+    const storedTime = localStorage.getItem("modalTimestamp");
+    const externalModal = localStorage.getItem("externalModal");
+
+    if (modalData === "true" && storedTime) {
+      const currentTime = new Date().getTime();
+      const elapsedTime = currentTime - parseInt(storedTime, 10);
+      const eightHours = 8 * 60 * 60 * 1000;
+
+      if (elapsedTime >= eightHours) {
+        localStorage.setItem("modal", "false");
+      }
+    }
+
+    // If modalData is "false" (or missing after 8 hours), show modal
+    if (
+      (!modalData || modalData === "false") &&
+      externalModal &&
+      externalModal === "false"
+    ) {
+      const timer = setTimeout(() => {
+        setModal(true);
+      }, 7000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (modal) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "scroll";
+    }
+    return () => {
+      document.body.style.overflowY = "scroll";
+    };
+  }, [modal]);
+
   return (
     <div ref={ref} onClick={() => setModal(false)}>
       {modal && <SitePopup setModal={setModal} />}

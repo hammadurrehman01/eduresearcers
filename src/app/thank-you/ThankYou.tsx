@@ -8,19 +8,20 @@ function ThankYou() {
     const name = localStorage.getItem("name")
     const number = localStorage.getItem("number")
   return (
-    <div style={{backgroundImage:"url('/imgs/banner-im.jpg')",backgroundSize:'cover',backgroundPosition:'center'}} className="flex  flex-col items-center justify-center h-screen bg-background px-4 pb-24 pt-32 md:pt-2 sm:px-6 lg:px-8">
+    <div style={{backgroundImage:"url('/imgs/banner-im.jpg')",backgroundSize:'cover',backgroundPosition:'center'}} className="flex  flex-col items-center justify-center h-screen bg-background px-4 pb-24 pt-32 md:pt-2 sm:px-6 lg:px-8 relative">
+       <div className="dark:absolute dark:inset-0 dark:bg-black/90"></div>
     <div className="mx-auto max-w-screen-xl text-center  scale-90 md:scale-100">
-      <div className="inline-flex items-center rounded-full bg-orange-500 px-4 py-2 text-primary-foreground">
+      <div className="inline-flex items-center rounded-full bg-orange-500 px-4 py-2 ">
         <CheckIcon className="mr-2 h-5 w-5" />
         <span>Thank You!</span>
       </div>
-      <h1 className="mt-6 text-xl font-medium tracking-tight text-zinc-900 sm:text-2xl">
+      <h1 className="mt-6 text-xl font-medium tracking-tight  sm:text-2xl">
         Dear <span className=' font-bold'>{name || "User"} </span>.
       </h1>
-      <h1 className="mt-6 text-lg font-medium  text-zinc-900 sm:text-xl">
+      <h1 className="mt-6 text-lg font-medium   sm:text-xl">
         Please Check your whatsapp <span className='font-bold'>{number}</span>  we have sent 45% discount offer
       </h1>
-      <p className="mt-4 text-zinc-900 lg:w-[610px] mx-auto">
+      <p className="mt-4  lg:w-[610px] mx-auto">
         Thank you for your recent purchase. We hope you enjoy your new product. If you have any questions or concerns,
         please don't hesitate to contact us.
       </p>
