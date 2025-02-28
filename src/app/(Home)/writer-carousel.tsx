@@ -380,7 +380,7 @@ export function WriterCarousel() {
 
 
     return (
-        <div className="w-full max-w-7xl mx-auto px-4 py-8">
+        <div id="expertwriters" className="w-full max-w-7xl mx-auto px-4 py-8">
             <div className="text-center mb-8 space-y-4">
                 <h2 className="text-3xl font-bold">
                     WORK WITH EXPERT <span className="text-orange-500">ACADEMIC WRITERS</span>
@@ -485,8 +485,76 @@ export function WriterCarousel() {
             </div>
 
             <Dialog open={!!selectedWriter} onOpenChange={() => setSelectedWriter(null)}>
+        {selectedWriter && (
+          <DialogContent className="max-w-[95vw] sm:max-w-lg md:max-w-2xl md:overflow-y-hidden overflow-y-auto p-4 sm:p-6 rounded-lg md:h-auto h-[90vh] md:scale-95 scale-100 ">
+            <DialogHeader className="space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                <Image
+                  src={selectedWriter.image || "/placeholder.svg"}
+                  alt={selectedWriter.name}
+                  width={80}
+                  height={80}
+                  className="rounded-full mx-auto sm:mx-0"
+                />
+                <div className="text-center sm:text-left">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 justify-center sm:justify-start">
+                    <DialogTitle className="text-xl">{selectedWriter.name}</DialogTitle>
+                    <div className="flex bg-green-700 text-white gap-1 px-2 py-1 rounded-sm self-center sm:self-auto">
+                      <span className="text-xs text-white">Verified</span>
+                      <span>
+                        <Check size={14} />
+                      </span>
+                    </div>
+                  </div>
+                  <div className="text-sm text-gray-600">PhD • {selectedWriter.title}</div>
+                </div>
+              </div>
+            </DialogHeader>
+
+            <div className="space-y-6 mt-4">
+              <div>
+                <div className="text-sm text-gray-500">Writer ID: {selectedWriter.id}</div>
+                <p className="mt-4 text-sm">{selectedWriter.mainreview}</p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-center">
+                <div className="border rounded-lg p-3">
+                  <div className="text-lg font-bold">3+</div>
+                  <div className="text-xs sm:text-sm text-gray-500">Subjects Expert</div>
+                </div>
+                <div className="border rounded-lg p-3">
+                  <div className="text-lg font-bold">5+</div>
+                  <div className="text-xs sm:text-sm text-gray-500">Years on Service</div>
+                </div>
+                <div className="border rounded-lg p-3">
+                  <div className="text-lg font-bold">100%</div>
+                  <div className="text-xs sm:text-sm text-gray-500">Acceptance Rate</div>
+                </div>
+              </div>
+
+              {selectedWriter && <ReviewsCarousel reviews={selectedWriter.reviews} />}
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <Link href={"/Order?coupon=FLAT45OFF"} className="w-full">
+                  <Button className="w-full bg-orange-500 hover:bg-orange-600">Send Task Details</Button>
+                </Link>
+                <Button
+                  onClick={handleGetStartedClick}
+                  variant="outline"
+                  className="w-full bg-gray-900 text-zinc-50 dark:bg-zinc-100 dark:text-zinc-900 hover:bg-gray-950 hover:text-zinc-50"
+                >
+                  Chat with {selectedWriter.name}
+                </Button>
+              </div>
+            </div>
+          </DialogContent>
+        )}
+      </Dialog>
+
+{/* 
+            <Dialog open={!!selectedWriter} onOpenChange={() => setSelectedWriter(null)}>
                 {selectedWriter && (
-                    <DialogContent className="max-w-full sm:max-w-lg md:max-w-2xl md:w-[95%] w-[90%] h-[90vh] md:overflow-y-hidden overflow-y-auto rounded-lg">
+                    <DialogContent className="max-w-full sm:max-w-lg md:max-w-2xl md:w-[95%] w-[90%] md:overflow-y-hidden overflow-y-auto rounded-lg lg:scale-95 ">
                         <DialogHeader>
                             <div className="flex items-center gap-4">
                                 <Image
@@ -555,7 +623,7 @@ export function WriterCarousel() {
                         </div>
                     </DialogContent>
                 )}
-            </Dialog>
+            </Dialog> */}
         </div>
     )
 }

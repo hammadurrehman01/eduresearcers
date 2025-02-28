@@ -59,7 +59,7 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
-          <ModeToggle />
+          {/* <ModeToggle /> */}
         </nav>
 
         {/* Mobile Navigation with Sheet */}
@@ -93,7 +93,7 @@ const Navbar = () => {
                     {link.label}
                   </Link>
                 ))}
-                <ModeToggle />
+                {/* <ModeToggle /> */}
               </nav>
             </div>
           </SheetContent>

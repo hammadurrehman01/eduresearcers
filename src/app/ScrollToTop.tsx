@@ -16,7 +16,7 @@ const ScrollToTop: React.FC = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -27,14 +27,14 @@ const ScrollToTop: React.FC = () => {
   };
 
   return (
-    
+
     <button
       onClick={scrollToTop}
       className={`fixed bottom-5 left-5 p-3 rounded-full bg-orange-600 text-white shadow-lg transition-opacity duration-300 
-                  ${visible ? 'opacity-100 z-[999] hover:scale-110 hover:animate-bounce duration-700 delay-700'  : 'opacity-0'}`}
+                  ${visible ? 'opacity-100 z-[999] hover:scale-110 hover:animate-bounce duration-700 delay-700' : 'opacity-0'}`}
       aria-label="Scroll to top"
     >
-      <span className=" flex items-center">Scroll <ArrowUp/></span>
+      <span className=" flex items-center">Scroll <ArrowUp /></span>
     </button>
   );
 };

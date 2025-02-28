@@ -111,7 +111,7 @@ const FaqSection: React.FC = () => {
               >
                 <Button
                   size="lg"
-                  className="group relative w-full overflow-hidden rounded-full px-8 text-white bg-green-500 transition-transform hover:scale-105 sm:w-auto hover:bg-green-500"
+                  className="group relative w-full overflow-hidden rounded-full px-8 text-zinc-900 bg-zinc-100 transition-transform hover:scale-105 hover:border-white hover:border sm:w-auto hover:bg-zinc-900 hover:text-zinc-100"
                 >
                   <div className="relative z-10 flex items-center  gap-2">
                    <Image className='mr-2' src={'/imgs/whatsapp.png'} width={25} height={25} alt='whatsapp'></Image>

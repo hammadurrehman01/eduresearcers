@@ -41,18 +41,17 @@ export default function RootLayout({
       <ScrollToTop />
 
       <body className={inter.className}>
-        <ThemeProvider
+        {/* <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        >
+        > */}
           <FloatingContact/>
           <Navbar />
           {children}
           <Footer />
           <Toaster richColors position="bottom-right" />
-        </ThemeProvider>
       </body>
     </html>
   );

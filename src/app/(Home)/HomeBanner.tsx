@@ -28,7 +28,7 @@ export function HomeBanner({ city, number, locationDetails }: any) {
 
       <div
         id="banner"
-        className="w-full bg-[url('/imgs/banner-im.jpg')] bg-cover bg-center bg-no-repeat relative"
+        className="w-full bg-[url('/imgs/banner-im.webp')] bg-cover bg-center bg-no-repeat relative"
       >
         <div className="dark:absolute dark:inset-0 dark:bg-black/90"></div>
 

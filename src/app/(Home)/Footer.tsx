@@ -116,6 +116,17 @@ function Footer() {
                                 </Button>
                             </div>
                         </div>
+                        <div className="flex items-center gap-3 mt-2 justify-center lg:justify-start text-muted-foreground g:mx-0 gap-4 lg:pl-9 ">
+                            <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                                <Image src="/imgs/instagram.png" width={32} height={32} className="mt-1" alt="Instagram" />
+                            </Link>
+                            <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                                <Image src="/imgs/facebook.png" width={32} height={32} className="mt-1" alt="Facebook" />
+                            </Link>
+                            <Link href="https://x.com" target="_blank" rel="noopener noreferrer">
+                                <Image src="/imgs/twitter.png" width={32} height={32} className="mt-1" alt="Twitter" />
+                            </Link>
+                        </div>
                     </div>
 
 
@@ -135,6 +146,10 @@ function Footer() {
 
 
                 </div>
+            </div>
+            <div className='lg:text-left text-center mt-7 lg:pl-12 px-5'>
+                <p className='pt-3 font-medium text-sm text-white '><span className='text-red-600 text-lg font-bol'>Disclaimer:</span> Eduresearcher offers tuition and educational support services to help students deepen their understanding and excel in various subjects.</p>
+
             </div>
             <div className='text-center mt-7'>
                 <hr></hr>
