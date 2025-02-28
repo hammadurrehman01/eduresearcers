@@ -32,13 +32,13 @@ export default function Modal() {
               backgroundBlendMode: 'overlay',
               backgroundColor: '#0000007a',
             }}
-            className="sm:max-w-[425px] h-80 sm:max-h-80"
+            className="sm:max-w-[425px] w-3/4 h-auto sm:h-80 sm:max-h-80 rounded-lg"
           >
             <DialogHeader>
-              <DialogTitle className="text-center font-bold text-2xl text-zinc-100 bg-[#ff680082] mt-7 rounded-md">
+              <DialogTitle className="text-center font-bold sm:text-2xl text-xl text-zinc-100 bg-[#ff680082] mt-7 rounded-md">
                 Congratulations
               </DialogTitle>
-              <DialogDescription className="text-center py-4 font-semibold text-xl text-zinc-100">
+              <DialogDescription className="text-center py-4 font-semibold sm:text-xl text-lg text-zinc-100">
                 45% OFF Discount Applied
               </DialogDescription>
               <DialogDescription className="text-center pb-4 font-semibold text-sm text-zinc-100">

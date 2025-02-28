@@ -25,42 +25,14 @@ const SitePopup = ({ setModal }: Props) => {
     const [nameMessage, setNameMessage] = useState("");
 
     const closeModal = () => {
+        handleCloseModal()
         setModal(false);
     };
     const handleCloseModal = () => {
         setModal(false);
         localStorage.setItem("modal", "true");
         localStorage.setItem("modalTimestamp", new Date().getTime().toString());
-        localStorage.setItem("externalModal", "false");
       };
-
-    useEffect(() => {
-        const modalData = localStorage.getItem("modal");
-        const storedTime = localStorage.getItem("modalTimestamp");
-        const externalModal = localStorage.getItem("externalModal");
-    
-        if (modalData === "true" && storedTime) {
-          const currentTime = new Date().getTime();
-          const elapsedTime = currentTime - parseInt(storedTime, 10);
-          const eightHours = 8 * 60 * 60 * 1000;
-    
-          if (elapsedTime >= eightHours) {
-            localStorage.setItem("modal", "false");
-          }
-        }
-    
-        // If modalData is "false" (or missing after 8 hours), show modal
-        if (
-          (!modalData || modalData === "false") &&
-          externalModal &&
-          externalModal === "false"
-        ) {
-          const timer = setTimeout(() => {
-            setModal(true);
-          }, 7000);
-          return () => clearTimeout(timer);
-        }
-      }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();

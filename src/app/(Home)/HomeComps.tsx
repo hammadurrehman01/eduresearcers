@@ -120,27 +120,22 @@ export default function HomeComps( ) {
   useEffect(() => {
     const modalData = localStorage.getItem("modal");
     const storedTime = localStorage.getItem("modalTimestamp");
-    const externalModal = localStorage.getItem("externalModal");
 
     if (modalData === "true" && storedTime) {
       const currentTime = new Date().getTime();
       const elapsedTime = currentTime - parseInt(storedTime, 10);
-      const eightHours = 8 * 60 * 60 * 1000;
+      const fiveHours = 5 * 60 * 60 * 1000;
 
-      if (elapsedTime >= eightHours) {
+      if (elapsedTime >= fiveHours) {
         localStorage.setItem("modal", "false");
       }
     }
 
     // If modalData is "false" (or missing after 8 hours), show modal
-    if (
-      (!modalData || modalData === "false") &&
-      externalModal &&
-      externalModal === "false"
-    ) {
+    if (!modalData || modalData === "false") {
       const timer = setTimeout(() => {
         setModal(true);
-      }, 7000);
+      }, 5000);
       return () => clearTimeout(timer);
     }
   }, []);

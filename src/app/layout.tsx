@@ -8,6 +8,7 @@ import Footer from "./(Home)/Footer";
 import Tawkto from "@/lib/Tawkto";
 import Script from "next/script";
 import FloatingContact from "@/components/FloatingContact";
+import ScrollToTop from "./ScrollToTop";
 
 const inter = Montserrat({
   subsets: ["latin"],
@@ -37,6 +38,8 @@ export default function RootLayout({
       />
 
       <Tawkto />
+      <ScrollToTop />
+
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
