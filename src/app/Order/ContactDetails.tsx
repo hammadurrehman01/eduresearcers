@@ -15,6 +15,8 @@ import { EmailAction } from "../(backend)/action/EmailAction";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import CustomCaptcha from "@/components/ui/common/CustomCaptcha";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 
 function ContactDetails({ onPrevious, locationDetails, currentURL }: any) {
   const {
@@ -35,21 +37,20 @@ function ContactDetails({ onPrevious, locationDetails, currentURL }: any) {
     file,
     name,
     email,
-    phone,
-    country,
+
     notes,
     symbol,
     ppp,
     unit,
     setName,
     setEmail,
-    setPhone,
-    setCountry,
+
     setNotes,
   } = useTopic();
 
-
+  const [country, setCountry] = useState(locationDetails.country || "");
   const [pending, setPending] = useState(false);
+  const [phone, setPhone] = useState<any>(null);
   const formRef = useRef<HTMLFormElement | null>(null);
   const router = useRouter();
   const [isVerified, setIsVerified] = useState(false);
@@ -167,7 +168,7 @@ function ContactDetails({ onPrevious, locationDetails, currentURL }: any) {
                 required
               />
             </div>
-            <div className="space-y-1">
+            {/* <div className="space-y-1">
               <Label htmlFor="number">Your Phone Number</Label>
               <Input
                 className="outline-orange-500 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
@@ -178,6 +179,20 @@ function ContactDetails({ onPrevious, locationDetails, currentURL }: any) {
                 type="number"
                 name="phone"
                 required
+              />
+            </div> */}
+
+            <div className="pt-2 w-full px-3">
+              <Label htmlFor="number">Your Phone Number</Label>
+              <PhoneInput
+                placeholder="Enter Your Phone Number"
+                defaultCountry={locationDetails.countryCode}
+                value={phone}
+                required
+                international
+                withCountryCallingCode
+                onChange={setPhone}
+                className="rounded-lg border-[2px] w-full py-3 px-3 outline-none text-sm md:text-base bg-white text-black dark:!bg-[#121212] dark:!text-white dark:page-specific focus:!outline-none"
               />
             </div>
 

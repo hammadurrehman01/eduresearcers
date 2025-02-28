@@ -36,8 +36,6 @@ export function HomeBanner({ city, number, locationDetails }: any) {
           <div className=" grid lg:grid-cols-2 grid-cols-1 gap-3 lg:py-10 py-3">
             {/* Left Section */}
             <div className="lg:py-4 lg:pl-24 px-5 scale-90 md:scale-100">
-         
-
               <p className="text-sm md:text-base  text-center md:text-start text-[#f97316] font-bold">
                 - AFFORDABLE - FASTEST - 100% SECURED -
               </p>

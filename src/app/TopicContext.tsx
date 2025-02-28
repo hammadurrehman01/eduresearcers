@@ -23,7 +23,7 @@ interface TopicContextType {
   name: string;
   email: string;
   phone: string;
-  country: string;
+  // country: string;
   notes: string;
   symbol: string;
   ppp: number;
@@ -45,7 +45,7 @@ interface TopicContextType {
   setName: (newName: string) => void;
   setEmail: (newEmail: string) => void;
   setPhone: (newPhone: string) => void;
-  setCountry: (newCountry: string) => void;
+  // setCountry: (newCountry: string) => void;
   setNotes: (newNotes: string) => void;
   setSymbol: (newSymbol: string) => void;
   setPpp: (newPpp: number) => void;
@@ -74,7 +74,6 @@ export const TopicProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [name,setName] = useState<string>('');
   const [email,setEmail] = useState<string>('');
   const [phone,setPhone] = useState<string>('');
-  const [country,setCountry] = useState<string>('');
   const [notes,setNotes] = useState<string>('');
   const [symbol, setSymbol] = useState<string>('');
   const [ppp, setPpp] = useState<number>(0);
@@ -246,8 +245,6 @@ useEffect(() => {
         setEmail,
         phone,
         setPhone,
-        country,
-        setCountry,
         notes,
         setNotes,
         symbol,

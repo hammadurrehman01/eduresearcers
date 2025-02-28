@@ -7,6 +7,8 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import CustomCaptcha from "@/components/ui/common/CustomCaptcha";
 import Image from "next/image";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 
 const DiscountForm = ({ city, locationDetails }: any) => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -39,7 +41,7 @@ const DiscountForm = ({ city, locationDetails }: any) => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
+  const [number, setNumber] = useState<any>(null);
   const [pending, setPending] = useState(false);
   const [errorObj, setErrorObj] = useState<any>({});
   const router = useRouter();
@@ -66,7 +68,7 @@ const DiscountForm = ({ city, locationDetails }: any) => {
       setPending(false);
       if (res?.success) {
         formRef.current?.reset();
-        router.push("/thank-you")
+        router.push("/thank-you");
       } else if (res?.error) {
         toast.error(res.error);
       }
@@ -121,14 +123,27 @@ const DiscountForm = ({ city, locationDetails }: any) => {
             {item}
           </p>
         ))}
-        <input
+        {/* <input
           value={number}
           onChange={(e) => setNumber(e.target.value)}
           name="phone"
           type="number"
           placeholder="Enter Your Phone Number"
           className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full px-4 py-1 border border-orange-400 rounded-md focus:outline-none focus:border-orange-600"
-        />
+        /> */}
+      
+          {/* <Label htmlFor="number">Your Phone Number</Label> */}
+          <PhoneInput
+            placeholder="Enter Your Phone Number"
+            defaultCountry={locationDetails.countryCode}
+            value={number}
+            required
+            international
+            withCountryCallingCode
+            onChange={setNumber}
+            className="rounded-lg w-full py-1 px-3 outline-none text-sm md:text-base bg-white text-black dark:!bg-[#121212] dark:!text-white dark:page-specific focus:!outline-none border border-orange-400 focus:border focus:!border-orange-600"
+          />
+      
         {errorObj?.phone?.map((item: any, i: any) => (
           <p key={i} className="text-red-600 text-sm">
             {item}
