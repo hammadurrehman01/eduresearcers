@@ -46,6 +46,21 @@ const DiscountForm = ({ city, locationDetails }: any) => {
   const [errorObj, setErrorObj] = useState<any>({});
   const router = useRouter();
 
+  useEffect(() => {
+    let oldName = localStorage.getItem("name");
+    let oldEmail = localStorage.getItem("email");
+    let oldNumber = localStorage.getItem("number");
+    if (oldName) {
+      setName(oldName as string);
+    }
+    if (oldEmail) {
+      setEmail(oldEmail as string);
+    }
+    if (oldNumber) {
+      setNumber(oldNumber as string);
+    }
+  }, []);
+  
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (!isVerified) {
@@ -55,7 +70,10 @@ const DiscountForm = ({ city, locationDetails }: any) => {
     setPending(true);
     e.preventDefault();
     localStorage.setItem("name", name);
+    localStorage.setItem("email", email);
     localStorage.setItem("number", number);
+
+    
 
     const sendData = async () => {
       const res = await EmailAction(

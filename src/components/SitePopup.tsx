@@ -36,12 +36,31 @@ const SitePopup = ({ setModal, locationDetails }: Props) => {
     localStorage.setItem("modalTimestamp", new Date().getTime().toString());
   };
 
+  useEffect(() => {
+    let oldName = localStorage.getItem("name");
+    let oldEmail = localStorage.getItem("email");
+    let oldNumber = localStorage.getItem("number");
+    if (oldName) {
+      setName(oldName as string);
+    }
+    if (oldEmail) {
+      setEmail(oldEmail as string);
+    }
+    if (oldNumber) {
+      setPhone(oldNumber as string);
+    }
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isVerified) {
       toast.error("Please Verify the Captcha");
       return;
     }
+
+    localStorage.setItem("name", name);
+    localStorage.setItem("email", email);
+    localStorage.setItem("number", phone);
 
     const data = {
       name,

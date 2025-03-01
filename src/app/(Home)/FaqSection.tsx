@@ -25,7 +25,7 @@ const FaqSection: React.FC = () => {
 
   const renderAccordionContent = (value: string, content: string) => (
     openItem === value && (
-      <AccordionContent className=' scale-95 md:scale-100 text-muted-foreground font-semibold pt-3 px-4 w-[350px] md:w-[500px]'>
+      <AccordionContent className='  text-muted-foreground font-semibold pt-3 px-4 w-[350px] md:w-[500px] '>
         {content}
       </AccordionContent>
     )

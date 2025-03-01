@@ -11,8 +11,8 @@ function ThankYou() {
     <div style={{backgroundImage:"url('/imgs/banner-im.webp')",backgroundSize:'cover',backgroundPosition:'center'}} className="flex  flex-col items-center justify-center h-screen bg-background px-4 pb-24 pt-32 md:pt-2 sm:px-6 lg:px-8 relative">
        <div className="dark:absolute dark:inset-0 dark:bg-black/90"></div>
     <div className="mx-auto max-w-screen-xl text-center  scale-90 md:scale-100">
-      <div className="inline-flex items-center rounded-full bg-orange-500 px-4 py-2 ">
-        <CheckIcon className="mr-2 h-5 w-5" />
+      <div className="inline-flex items-center rounded-full bg-orange-500 px-4 py-2 text-white">
+        <CheckIcon className="mr-2 h-5 w-5 " />
         <span>Thank You!</span>
       </div>
       <h1 className="mt-6 text-xl font-medium tracking-tight  sm:text-2xl">

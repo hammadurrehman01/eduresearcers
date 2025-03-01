@@ -1,39 +1,26 @@
-"use server"
-import { z } from "zod"
-import nodemailer from "nodemailer"
-
-const formSchema = z.object({
-
-  email: z.string().email().nonempty(),
-
-});
+"use server";
+import { z } from "zod";
+import nodemailer from "nodemailer";
 
 export default async function EmailAction2(state: any, formData: FormData) {
   try {
+    const email = formData.get("email");
 
-    const email = formData.get("email")
+    const transporter = nodemailer.createTransport({
+      host: process.env.HOST as string,
+      port: process.env.PORTS as unknown as number,
+      secure: false, // true for 465, false for other ports
+      auth: {
+        user: process.env.USER, // your SMTP username
+        pass: process.env.PASSWORD, // your SMTP password
+      },
+    });
 
-
-    const validatedField = formSchema.safeParse({ email })
-
-    if (validatedField.error) {
-      return { info: validatedField.error.flatten().fieldErrors }
-    } else if (validatedField.success) {
-      const transporter = nodemailer.createTransport({
-        host: process.env.HOST as string,
-        port: process.env.PORTS as unknown as number,
-        secure: false, // true for 465, false for other ports
-        auth: {
-          user: process.env.USER, // your SMTP username
-          pass: process.env.PASSWORD // your SMTP password
-        }
-      });
-
-      let mailOptions = {
-        from: `Eduresearcher® Alert - <${process.env.MAILFROM}>`,
-        to: validatedField.data.email,
-        subject: `New Email Form Entry | ${process.env.NEXT_PUBLIC_NAME}`,
-        html: `
+    let mailOptions = {
+      from: `Eduresearcher® Alert - <${process.env.MAILFROM}>`,
+      to: email,
+      subject: ` Your Special Discount Awaits – FLAT 45% OFF! | ${process.env.NEXT_PUBLIC_NAME}`,
+      html: `
   <body style="margin: 0; padding: 0;   color: black;">
     <div style="width: 100%; max-width: 600px; border-radius: 20px; margin: 0 auto; background-color: #f4eefd;  font-family: Google Sans;">
     
@@ -51,7 +38,7 @@ export default async function EmailAction2(state: any, formData: FormData) {
         </div>
         </div>
     
-      <p style="font-size: 20px;   text-align: center; font-weight: 600;">Thanks! We’re already working on it!<br></p>
+      <p style="font-size: 20px;text-align: center; font-weight: 600;">Exciting news! We’ve got something special just for you.<br></p>
    
       <div style=" text-align: center;">
         <div style="margin: 5px 0;">
@@ -68,20 +55,16 @@ export default async function EmailAction2(state: any, formData: FormData) {
 
       <div style="padding: 10px 0; text-align: center;">
         <div style="margin: 10px 0;">
-        <p style="font-size: 20px;  text-align: center; font-weight: 500;">Apply this discount code to begin your journey!</p>
+        <p style="font-size: 20px;  text-align: center; font-weight: 500;">Get FLAT 45% OFF on your order with this exclusive promo code</p>
         <a href="https://eduresearchers.com/Order?coupon=FLAT45OFF">
           <img style="border-radius: 10px;"  height="100" src="https://muhammadumer.sirv.com/promo-img-edu.png"  alt="">
         </a>
         </div>
         </div>
 
-
-    
-     
-    
     
       <div style="text-align: center;">
-        <p style="font-size: 18px;  font-weight: 400;">You Can Contact Our Support Team 24/7.</p>
+        <p style="font-size: 18px;  font-weight: 400;">Need help? Our support team is available 24/7!</p>
         <a href="https://wa.me/+447451271188?text=Hello Edu Researchers Team, I need Education Assistance. Could you help me complete my task on time?" style="display: inline-block; padding: 10px 20px; background-color: #3dad32;  text-decoration: none; font-size: 16px; vertical-align: middle; font-weight: bold; border-radius: 5px; margin: 5px 0; text-align: center; color: whitesmoke;">
           <img style="vertical-align: middle;" width="30px" src="https://muhammadumer.sirv.com/icons8-whatsapp-48.png" alt="">
           Whatsapp Now
@@ -93,31 +76,18 @@ export default async function EmailAction2(state: any, formData: FormData) {
       </div>
     </div>
     </body>
-`
-      };
+`,
+    };
 
-      try {
-        const info = await transporter.sendMail(mailOptions);
-        console.log('Message sent: %s', info.messageId);
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-        return { success: 'Form Submitted Successfully' };
-      } catch (error) {
-        console.error('Error sending email:', error);
-        return { error: 'Failed to send email' };
-      }
+    try {
+      const info = await transporter.sendMail(mailOptions as any);
+
+      return { success: "Form Submitted Successfully" };
+    } catch (error) {
+      console.error("Error sending email:", error);
+      return { error: "Failed to send email" };
     }
-
   } catch (error) {
-    return { error: "Something Went Wrong" }
+    return { error: "Something Went Wrong" };
   }
-
 }
-
-
-
-
-
-
-
-
-
