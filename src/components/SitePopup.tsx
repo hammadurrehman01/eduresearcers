@@ -128,11 +128,11 @@ const SitePopup = ({ setModal, locationDetails }: Props) => {
         onClick={closeModal}
       ></div>
 
-      {/* Modal Content */}
+                   {/*------------------ Desktop View Form ------------------------------*/}
       <div className="fixed w-full  flex  justify-center z-[100000] modal-content p-4 ">
         <div
           onClick={(e) => e.stopPropagation()}
-          className="w-[95%] md:w-[90%] lg:w-[80%] max-w-5xl rounded-2xl flex flex-col lg:flex-row overflow-hidden shadow-2xl mx-auto relative lg:scale-[.72] scale-[.60]  lg:-translate-y-48 -translate-y-64  "
+          className="w-[95%] md:w-[90%] lg:w-[80%] max-w-5xl rounded-2xl md:flex flex-col lg:flex-row overflow-hidden shadow-2xl mx-auto relative lg:scale-[.72] scale-[.60]  lg:-translate-y-48 -translate-y-64  hidden"
         >
           {/* Left Section - Gradient Background with Offer */}
           <div className="bg-gray-900 text-white p-6 lg:p-10 lg:w-[40%] hidden lg:block">
@@ -458,7 +458,7 @@ const SitePopup = ({ setModal, locationDetails }: Props) => {
                     <span>Processing Your Request...</span>
                   </div>
                 ) : (
-                  "Get Your 50% Discount Now"
+                  "Get Your Discount Code Now"
                 )}
               </button>
               <p className="text-center text-sm text-gray-500 mt-2">
@@ -477,6 +477,148 @@ const SitePopup = ({ setModal, locationDetails }: Props) => {
           </button>
         </div>
       </div>
+
+
+           {/*------------------------------ Mobile View Form ------------------------------*/}
+
+      <div className="fixed inset-0 bg-white scale-[.80] h-[119vh] -translate-y-14 rounded-xl z-[100000] overflow-hidden md:hidden">
+      <div className=" px-4 py-6 ">
+        {/* Header with close button */}
+        <div className="flex justify-between items-center mb-4">
+          <div className="bg-orange-500 text-zinc-100 px-3 py-1 mx-auto rounded-full text-sm font-medium">
+            Get 45% Discount Code on Your Email
+          </div>
+          <button onClick={closeModal} className="text-gray-600 hover:text-gray-900 p-2" aria-label="Close form">
+            <X size={20} />
+          </button>
+        </div>
+
+        {/* Main content */}
+        <div className="mb-6">
+          <h2 className="text-xl text-center font-bold text-gray-800 mb-2">Unlock Your Academic Success</h2>
+          <p className="text-gray-600 text-center text-sm px-5">Connect with our expert professors <br /> and get the help you need.</p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <label htmlFor="mobile-name" className="block text-base font-medium text-gray-700 mb-1">
+              Full Name
+            </label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg
+                  className="w-5 h-5 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  ></path>
+                </svg>
+              </div>
+              <input
+                id="mobile-name"
+                type="text"
+                name="name"
+                placeholder="Enter your full name"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 p-3"
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+              />
+              {name === "" && <span className="text-red-600 text-xs mt-1 block">{nameMessage}</span>}
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="mobile-phone" className="block text-base font-medium text-gray-700 mb-1">
+              Phone Number
+            </label>
+            <PhoneInput
+              placeholder="Enter Your Phone Number"
+              defaultCountry={locationDetails.countryCode}
+              value={phone}
+              required
+              international
+              withCountryCallingCode
+              onChange={setPhone}
+              className="rounded-lg w-full py-3 px-3 outline-none text-sm md:text-base bg-white text-black dark:!bg-[#121212] dark:!text-white dark:page-specific focus:!outline-none border border-gray-300"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="mobile-email" className="block text-base font-medium text-gray-700 mb-1">
+              Email Address
+            </label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg
+                  className="w-5 h-5 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </div>
+              <input
+                id="mobile-email"
+                type="email"
+                name="email"
+                placeholder="Enter your email address"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 p-3"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
+              {email === "" && <span className="text-red-600 text-xs mt-1 block">{emailMessage}</span>}
+            </div>
+          </div>
+
+
+
+          {/* Captcha */}
+          <div className="w-full flex items-center justify-center">
+            <CustomCaptcha setIsVerified={setIsVerified} />
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={!isVerified}
+            className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 shadow-md"
+          >
+            {pending ? (
+              <div className="flex items-center justify-center gap-2">
+                <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                <span>Processing Your Request...</span>
+              </div>
+            ) : (
+              "Get Your Discount Code Now"
+            )}
+          </button>
+         
+        </form>
+
+ 
+      </div>
+    </div>
     </>
   );
 };
