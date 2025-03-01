@@ -1,22 +1,45 @@
 import Image from "next/image";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useFormState } from "react-dom";
 import EmailAction2 from "../(backend)/action/emailAction2";
 import { toast } from "sonner";
 import { useFormStatus } from "react-dom";
 import { Loader } from "lucide-react";
+import { useRouter } from "next/navigation";
 
-function SmallDivider() {
-  const [state, dispatch] = useFormState(EmailAction2, null);
-  const formRef = useRef<HTMLFormElement>(null);
+function SmallDivider({ locationDetails }: any) {
+  const [currentURL, setCurrentURL] = useState("");
+  const [pending, setPending] = useState(false);
+  const router = useRouter();
+
   useEffect(() => {
-    if (state?.success) {
-      formRef.current?.reset();
-      toast.success(state.success);
-    } else if (state?.error) {
-      toast.error(state.error);
+    // Get the current URL using window.location
+    const currentURL = window.location.href;
+    setCurrentURL(currentURL);
+    // Log the current URL to the console (or do whatever you need with it)
+  }, []);
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setPending(true)
+
+    try {
+      const response = await EmailAction2(email, currentURL, locationDetails);
+
+      console.log("response", response)
+
+      if (response?.success) {
+        router.push("/thankyou");
+        setPending(false)
+      } else {
+        console.log("Error: " + response?.error);
+      }
+    } catch (error) {
+      console.error("Form submission failed", error);
     }
-  }, [state]);
+  };
+
   return (
     <div
       data-aos="fade-down"
@@ -40,7 +63,7 @@ function SmallDivider() {
               code on your email
             </h2>
 
-            <form ref={formRef} action={dispatch}>
+            <form  onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 grid-cols-1  mt-4">
                 <div className="mt-2 w-4/5 bg-white rounded-lg md:ml-0 ml-10 ">
                   <input
@@ -48,12 +71,28 @@ function SmallDivider() {
                     type="email"
                     name="email"
                     placeholder="Enter Your Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
-                 
                 </div>
 
                 <div className="mt-2 md:ml-0  scale-[.85] md:scale-100 ">
-                  <DividerButton />{" "}
+                <button
+    type="submit"
+    
+      disabled={pending}
+      className="flex w-full lg:w-auto justify-center lg:justify-start bg-orange-500 py-4 px-6 rounded-lg text-white font-medium w-3/4 md:w-3/4 md:-ml-16 scale-90 hover:scale-95 lg:scale-95 lg:hover:scale-100 transition ease-in duration-200 delay-200 hover:shadow-xl"
+    >
+      {" "}
+      {pending ? (
+        <>
+          <Loader className="animate-spin mr-2 h-5 w-5 " /> <p>Loading...</p>
+        </>
+      ) : (
+        "Get My Discount Code"
+      )}
+    </button>
                 </div>
               </div>
             </form>
@@ -77,21 +116,9 @@ function SmallDivider() {
 
 export default SmallDivider;
 
-function DividerButton() {
-  const { pending } = useFormStatus();
-  return (
-    <button
-      disabled={pending}
-      className="flex w-full lg:w-auto justify-center lg:justify-start bg-orange-500 py-4 px-6 rounded-lg text-white font-medium w-3/4 md:w-3/4 md:-ml-16 scale-90 hover:scale-95 lg:scale-95 lg:hover:scale-100 transition ease-in duration-200 delay-200 hover:shadow-xl"
-    >
-      {" "}
-      {pending ? (
-        <>
-          <Loader className="animate-spin mr-2 h-5 w-5 " /> <p>Loading...</p>
-        </>
-      ) : (
-        "Get My Discount Code"
-      )}
-    </button>
-  );
-}
+// function DividerButton() {
+//   const { pending } = useFormStatus();
+//   return (
+  
+//   );
+// }

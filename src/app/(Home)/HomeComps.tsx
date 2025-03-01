@@ -167,7 +167,7 @@ export default function HomeComps( ) {
       <WriterCarousel/>
       <SupportSection/>
       <Reviews/>
-      <SmallDivider/>
+      <SmallDivider locationDetails={locationDetails} />
       <FaqSection/>
     </div>
   );

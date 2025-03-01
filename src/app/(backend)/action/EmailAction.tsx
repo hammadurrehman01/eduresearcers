@@ -160,7 +160,7 @@ async function sendEmailClient(data: any) {
     file,
   } = data;
   const clientMailOptions = {
-    from: `Eduresearcher® Alert - Order Recieved <${process.env.MAILFROM}>`,
+    from: `Edu Researchers Alert - Order Recieved <${process.env.MAILFROM}>`,
     to: email,
     subject: `We Have Recieved Your Order - Complete Your Payment Now | ${process.env.NEXT_PUBLIC_NAME}`,
     html: `
@@ -394,10 +394,7 @@ async function sendEmailClient(data: any) {
           Whatsapp Now
         </a>
       </div>
-    
-      <div style="text-align: center; padding-top: 10px; font-size: 12px; ">
-        <p>Eduresearcher is a registered trademark of Eduresearcher, Inc. All rights reserved.</p>
-      </div>
+
     
     </div>
     </body>
