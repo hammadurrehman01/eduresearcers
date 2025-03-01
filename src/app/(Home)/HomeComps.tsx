@@ -153,7 +153,7 @@ export default function HomeComps( ) {
 
   return (
     <div ref={ref} onClick={() => setModal(false)}>
-      {modal && <SitePopup setModal={setModal} />}
+      {modal && <SitePopup setModal={setModal} locationDetails={locationDetails} />}
       <Suspense fallback={<>loading...</>}>
       <HomeBanner locationDetails={locationDetails}  />
       </Suspense>
